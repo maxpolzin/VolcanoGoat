@@ -7,9 +7,7 @@ SBUSReader::SBUSReader(HardwareSerial &serial, int8_t rx_pin, int8_t tx_pin)
 
 void SBUSReader::begin() {
   sbus.Begin();
-
   Serial.println("SBUSReader initialized.");
-
 }
 
 void SBUSReader::update() {
