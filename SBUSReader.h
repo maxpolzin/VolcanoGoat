@@ -16,7 +16,6 @@ public:
 
   double forwardVelocityCommand;
   double steeringVelocityCommand;
-  double winchVelocityCommand;
   double cameraPositionCommand;
   bool isConnected;
 

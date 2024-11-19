@@ -3,7 +3,7 @@
 #include "SBUSReader.h"
 
 SBUSReader::SBUSReader(HardwareSerial &serial, int8_t rx_pin, int8_t tx_pin)
-  : sbus(&serial, rx_pin, tx_pin, true), isConnected(false), forwardVelocityCommand(0), steeringVelocityCommand(0), winchVelocityCommand(0), cameraPositionCommand(0) {}
+  : sbus(&serial, rx_pin, tx_pin, true), isConnected(false), forwardVelocityCommand(0), steeringVelocityCommand(0), cameraPositionCommand(0) {}
 
 void SBUSReader::begin() {
   sbus.Begin();
@@ -44,7 +44,7 @@ void SBUSReader::processChannels() {
 
     steeringVelocityCommand = 0.0;
     forwardVelocityCommand = 0.0;
-    winchVelocityCommand = 0.0;
+    cameraPositionCommand = 0.0;
     
     return;
   }
@@ -54,7 +54,6 @@ void SBUSReader::processChannels() {
   if (abs(forwardVelocityCommand) < 0.3) {
       forwardVelocityCommand = 0.0;
   }
-  cameraPositionCommand = normalize(data.ch[3]);
-  winchVelocityCommand = normalize(data.ch[4]);
+  cameraPositionCommand = normalize(data.ch[4]);
 
 }
